@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="h-100 w-100 d-flex flex-column justify-content-center align-items-center">
+    <form class="w-50 mt-5" action="/" method="POST">
+        <h1 class="text-light">Welcome to Movie Recommendation System!</h1>
+        <p class="fw-lighter text-light">&dArr; Choose a movie to get related Recommendations. &dArr;</p>
+        <div class="text-center">
+            <select name="movieName" class="form-select" aria-label="Default select example">
+                <option selected>Select a Movie</option>
+                {% for i in range(0,db|length) %}
+                <option value="{{ db.title[i] }}">{{ db.title[i] }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" value="submit" class="btn btn-primary mt-2">Submit</button>
+        </div>
+    </form>
+    <div class="">
+        {% if movies|length > 0 %}
+        <p class="text-light mx-4 fw-bold"><u> Recommended Movies </u> &rArr; </p>
+        {% endif %}
+        <div class="container">
+            <div class="row row-cols-3">
+                {% for i in range(0, movies|length) %}
+                <div class="col mt-2 mb-2">
+                    <div class="card" id="card-trans" style="width: 18rem;">
+                        <img src="{{ posters[i] }}" class="card-img-top" alt="poster">
+                        <div class="card-body text-center fw-bold">
+                            <p class="card-text">{{ movies[i] }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
