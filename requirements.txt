@@ -13,3 +13,4 @@ python-dotenv==0.20.0
 requests==2.25.1
 scikit-learn==1.0.2
 SQLAlchemy==1.4.37
+tk==0.1.0
