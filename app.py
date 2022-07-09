@@ -45,5 +45,5 @@ def home():
         # print(movieName)
     return render_template('index.html', movies=movies, db=db, posters=posters)
 
-
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
